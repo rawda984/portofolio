@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Data Scientist | Étudiante 4ème Année</title>
+    
+    <!-- Importation des polices (Google Fonts) -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Importation des icônes (FontAwesome) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* =========================================
+           VARIABLES CSS & THEMES
+           ========================================= */
+        :root {
+            /* Palette de couleurs par défaut (Thème Sombre élégant) */
+            --bg-color: #121212;
+            --bg-secondary: #1e1e1e;
+            --text-color: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            
+            /* La couleur demandée : Turquoise dégradé vers Vert */
+            --primary-gradient: linear-gradient(135deg, #40E0D0 0%, #228B22 100%); 
+            --accent-color: #40E0D0;
+            
+            /* Effets */
+            --shadow-light: 0 10px 30px rgba(0,0,0,0.5);
+            --transition-speed: 0.4s;
+            --glow: 0 0 20px rgba(64, 224, 208, 0.3);
+        }
+
+        /* Thème Clair */
+        body.light-mode {
+            --bg-color: #f4f7f6;
+            --bg-secondary: #ffffff;
+            --text-color: #333333;
+            --text-muted: #666666;
+            --card-bg: rgba(0, 0, 0, 0.03);
+            --shadow-light: 0 10px 30px rgba(0,0,0,0.1);
+            --glow: 0 0 15px rgba(64, 224, 208, 0.4);
+        }
+
+        /* =========================================
+           RESET & STYLES GLOBAUX
+           ========================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: background-color var(--transition-speed), color var(--transition-speed);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Classe utilitaire pour le texte en dégradé */
+        .gradient-text {
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        /* Boutons */
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .btn-primary {
+            background: var(--primary-gradient);
+            color: #fff;
+            box-shadow: var(--glow);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 30px rgba(64, 224, 208, 0.6);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--accent-color);
+            color: var(--text-color);
+        }
+
+        .btn-outline:hover {
+            background: var(--accent-color);
+            color: #fff;
+        }
+
+        /* =========================================
+           NAVIGATION
+           ========================================= */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(18, 18, 18, 0.8); /* Glassmorphism sombre */
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        body.light-mode nav {
+            background: rgba(255, 255, 255, 0.8);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--accent-color);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Switch Thème */
+        .theme-switch {
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--text-color);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* =========================================
+           ANIMATIONS D'ENTRÉE (SCROLL)
+           ========================================= */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Délai en cascade pour les éléments qui se suivent */
+        .delay-100 { transition-delay: 0.1s; }
+        .delay-200 { transition-delay: 0.2s; }
+        .delay-300 { transition-delay: 0.3s; }
+
+        /* =========================================
+           SECTION ACCUEIL (HERO)
+           ========================================= */
+        #home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 10%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Forme floue en arrière-plan pour l'ambiance */
+        .bg-shape {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: var(--primary-gradient);
+            filter: blur(150px);
+            opacity: 0.2;
+            border-radius: 50%;
+            z-index: -1;
+            top: 20%;
+            right: 10%;
+            animation: pulse 10s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.2; }
+            100% { transform: scale(1.2); opacity: 0.3; }
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            gap: 50px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        /* Style Photo "Apple" (Long que large, profondeur, brillance) */
+        .hero-image-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .apple-frame {
+            width: 350px;
+            height: 420px; /* Plus long que large */
+            background-image: url('https://picsum.photos/seed/datascience/400/500'); /* Placeholder */
+            background-size: cover;
+            background-position: center;
+            /* Forme style Apple (coins arrondis sophistiqués) */
+            border-radius: 40px 40px 40px 10px; 
+            position: relative;
+            box-shadow: 
+                20px 20px 60px rgba(0,0,0,0.4),
+                -10px -10px 30px rgba(255,255,255,0.05); /* Profondeur */
+            z-index: 2;
+            transition: transform 0.5s;
+        }
+
+        /* La brillance au fond (glow) */
+        .apple-frame::before {
+            content: '';
+            position: absolute;
+            inset: -15px;
+            background: var(--primary-gradient);
+            border-radius: 50px 50px 50px 20px;
+            z-index: -1;
+            filter: blur(15px);
+            opacity: 0.6;
+        }
+
+        .apple-frame:hover {
+            transform: scale(1.02) rotate(-2deg);
+        }
+
+        /* =========================================
+           SECTION À PROPOS (ABOUT)
+           ========================================= */
+        #about {
+            padding: 100px 10%;
+            background: var(--bg-secondary);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .section-header .line {
+            width: 60px;
+            height: 4px;
+            background: var(--primary-gradient);
+            margin: 0 auto;
+            border-radius: 2px;
+        }
+
+        .about-container {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        /* Style Photo À Propos (Rectangle + Profondeur + Glow) */
+        .about-img {
+            flex: 1;
+            position: relative;
+        }
+
+        .rect-frame {
+            width: 100%;
+            max-width: 400px;
+            height: 300px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            z-index: 2;
+        }
+
+        .rect-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Fond brillant derrière */
+        .rect-frame::after {
+            content: '';
+            position: absolute;
+            inset: -20px;
+            background: var(--primary-gradient);
+            z-index: -1;
+            border-radius: 30px;
+            filter: blur(20px);
+            opacity: 0.5;
+        }
+
+        .about-text {
+            flex: 1.5;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: var(--text-muted);
+        }
+
+        /* =========================================
+           SECTION COMPÉTENCES (SKILLS)
+           ========================================= */
+        #skills {
+            padding: 100px 10%;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: 0.3s;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: var(--primary-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .skill-card h3 {
+            margin-bottom: 10px;
+        }
+
+        .skill-tags span {
+            display: inline-block;
+            background: rgba(64, 224, 208, 0.1);
+            color: var(--accent-color);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            margin: 2px;
+        }
+
+        /* =========================================
+           SECTION PROJETS
+           ========================================= */
+        #projects {
+            padding: 100px 10%;
+            background: var(--bg-secondary);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .project-img {
+            height: 200px;
+            background: #333;
+            position: relative;
+        }
+        
+        .project-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .project-info {
+            padding: 25px;
+        }
+
+        .project-info h3 {
+            margin-bottom: 10px;
+        }
+
+        .project-info p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        .github-link {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .github-link:hover {
+            text-decoration: underline;
+        }
+
+        /* =========================================
+           SECTION EXPÉRIENCES
+           ========================================= */
+        #experience {
+            padding: 100px 10%;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background: rgba(255,255,255,0.1);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            right: -8px;
+            background-color: var(--bg-color);
+            border: 3px solid var(--accent-color);
+            top: 20px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .left { left: 0; text-align: right; }
+        .right { left: 50%; }
+        .left::after { right: -8px; }
+        .right::after { left: -8px; }
+
+        .content-box {
+            padding: 20px;
+            background: var(--card-bg);
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .content-box h4 { color: var(--accent-color); margin-bottom: 5px; }
+        .content-box .date { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 10px; display: block;}
+
+        /* =========================================
+           SECTION CONTACT
+           ========================================= */
+        #contact {
+            padding: 100px 10%;
+            background: var(--bg-secondary);
+            text-align: center;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--text-color);
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            background: var(--bg-color);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: var(--text-color);
+            font-family: inherit;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        /* =========================================
+           FOOTER
+           ========================================= */
+        footer {
+            padding: 30px;
+            text-align: center;
+            background: var(--bg-color);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+        
+        /* Lien caché pour l'admin */
+        .admin-trigger {
+            color: var(--bg-color); /* Invisible */
+            cursor: default;
+            font-size: 0.8rem;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        /* =========================================
+           ADMIN PANEL (MODAL)
+           ========================================= */
+        #admin-modal {
+            display: none; /* Caché par défaut */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            backdrop-filter: blur(5px);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .admin-content {
+            background: var(--bg-secondary);
+            width: 90%;
+            max-width: 900px;
+            height: 80vh;
+            border-radius: 15px;
+            display: flex;
+            overflow: hidden;
+            border: 1px solid var(--accent-color);
+            box-shadow: 0 0 50px rgba(0,0,0,0.5);
+        }
+
+        .admin-sidebar {
+            width: 250px;
+            background: rgba(0,0,0,0.2);
+            padding: 20px;
+            border-right: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .admin-sidebar h3 { margin-bottom: 30px; color: var(--accent-color); }
+
+        .admin-menu li {
+            padding: 15px;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: 0.3s;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .admin-menu li:hover, .admin-menu li.active {
+            background: rgba(64, 224, 208, 0.1);
+            color: var(--accent-color);
+        }
+
+        .admin-main {
+            flex: 1;
+            padding: 30px;
+            overflow-y: auto;
+        }
+
+        .admin-section { display: none; }
+        .admin-section.active-section { display: block; }
+
+        .stat-card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: inline-block;
+            width: 48%;
+            margin-right: 2%;
+        }
+
+        .message-item {
+            background: var(--bg-color);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 3px solid var(--accent-color);
+        }
+
+        .close-admin {
+            float: right;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content { flex-direction: column-reverse; text-align: center; }
+            .hero-buttons { justify-content: center; }
+            .nav-links { display: none; } /* Pour simplifier sur mobile */
+            .menu-toggle { display: block; }
+            .about-container { flex-direction: column; }
+            
+            .timeline::after { left: 31px; }
+            .timeline-item { width: 100%; padding-left: 70px; padding-right: 25px; }
+            .timeline-item::after { left: 21px; }
+            .left { text-align: left; }
+            
+            .admin-content { flex-direction: column; height: 90vh; }
+            .admin-sidebar { width: 100%; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav>
+        <div class="logo">Data<span class="gradient-text">Scientist</span>.</div>
+        <ul class="nav-links">
+            <li><a href="#home">Accueil</a></li>
+            <li><a href="#about">À propos</a></li>
+            <li><a href="#skills">Compétences</a></li>
+            <li><a href="#projects">Projets</a></li>
+            <li><a href="#experience">Expériences</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div style="display: flex; gap: 20px; align-items: center;">
+            <i class="fas fa-moon theme-switch" id="theme-toggle" title="Changer le thème"></i>
+            <i class="fas fa-bars menu-toggle"></i>
+        </div>
+    </nav>
+
+    <!-- ACCUEIL -->
+    <section id="home">
+        <div class="bg-shape"></div>
+        <div class="hero-content">
+            <div class="hero-text reveal">
+                <h3>Bonjour, je suis</h3>
+                <h1 class="gradient-text">Future Data Scientist</h1>
+                <p>Étudiante en 4ème année, spécialisée dans l'analyse de données, le Machine Learning et la transformation de données brutes en décisions stratégiques.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">Contact Me</a>
+                    <a href="#" class="btn btn-outline" download>Download CV <i class="fas fa-download"></i></a>
+                </div>
+            </div>
+            <div class="hero-image-container reveal delay-200">
+                <div class="apple-frame"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- À PROPOS -->
+    <section id="about">
+        <div class="section-header reveal">
+            <h2>À Propos <span class="gradient-text">De Moi</span></h2>
+            <div class="line"></div>
+        </div>
+        <div class="about-container">
+            <div class="about-img reveal">
+                <div class="rect-frame">
+                    <img src="https://picsum.photos/seed/student/500/400" alt="Photo Profil">
+                </div>
+            </div>
+            <div class="about-text reveal delay-100">
+                <h3>Passionnée par les chiffres et l'impact.</h3>
+                <br>
+                <p>Actuellement en 4ème année d'études supérieures en Data Science, je combine une rigueur analytique avec une créativité dans la visualisation des données.</p>
+                <p>Mon objectif est d'aider les entreprises à comprendre leurs données. Je maîtrise la chaîne de valeur de la data : du nettoyage à la modélisation prédictive, en passant par la visualisation interactive.</p>
+                <p>Contrairement à un développeur pur, mon focus n'est pas de créer des applications web complexes, mais de leur donner du sens à travers le backend et l'analyse.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- COMPÉTENCES -->
+    <section id="skills">
+        <div class="section-header reveal">
+            <h2>Mes <span class="gradient-text">Compétences</span></h2>
+            <div class="line"></div>
+        </div>
+        <div class="skills-grid">
+            <!-- Hard Skill 1 -->
+            <div class="skill-card reveal">
+                <i class="fab fa-python skill-icon"></i>
+                <h3>Python & Analyse</h3>
+                <div class="skill-tags">
+                    <span>Pandas</span>
+                    <span>NumPy</span>
+                    <span>Scikit-learn</span>
+                    <span>Matplotlib</span>
+                </div>
+            </div>
+            <!-- Hard Skill 2 -->
+            <div class="skill-card reveal delay-100">
+                <i class="fas fa-database skill-icon"></i>
+                <h3>Bases de Données</h3>
+                <div class="skill-tags">
+                    <span>SQL</span>
+                    <span>NoSQL (MongoDB)</span>
+                    <span>Data Modeling</span>
+                </div>
+            </div>
+            <!-- Hard Skill 3 -->
+            <div class="skill-card reveal delay-200">
+                <i class="fas fa-chart-pie skill-icon"></i>
+                <h3>Visualisation & BI</h3>
+                <div class="skill-tags">
+                    <span>Power BI</span>
+                    <span>Tableau</span>
+                    <span>Excel Avancé</span>
+                </div>
+            </div>
+            <!-- Soft Skill -->
+            <div class="skill-card reveal delay-300">
+                <i class="fas fa-brain skill-icon"></i>
+                <h3>Soft Skills</h3>
+                <div class="skill-tags">
+                    <span>Résolution de problèmes</span>
+                    <span>Communication</span>
+                    <span>Curiosité</span>
+                    <span>Esprit critique</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJETS -->
+    <section id="projects">
+        <div class="section-header reveal">
+            <h2>Mes <span class="gradient-text">Projets</span></h2>
+            <div class="line"></div>
+        </div>
+        <div class="projects-grid">
+            <!-- Projet 1 -->
+            <div class="project-card reveal">
+                <div class="project-img">
+                    <img src="https://picsum.photos/seed/mlproject/400/250" alt="ML Project">
+                </div>
+                <div class="project-info">
+                    <h3>Prédiction de Churn Client</h3>
+                    <p>Modèle de Machine Learning utilisant Python et Scikit-Learn pour prédire la fidélité des clients bancaires.</p>
+                    <a href="#" class="github-link">En savoir plus sur GitHub <i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <!-- Projet 2 -->
+            <div class="project-card reveal delay-100">
+                <div class="project-img">
+                    <img src="https://picsum.photos/seed/dashboard/400/250" alt="Dashboard">
+                </div>
+                <div class="project-info">
+                    <h3>Dashboard Ventes Power BI</h3>
+                    <p>Tableau de bord interactif connecté à une base SQL pour suivre les KPIs de vente en temps réel.</p>
+                    <a href="#" class="github-link">En savoir plus sur GitHub <i class="fab fa-github"></i></a>
+                </div>
+            </div>
+            <!-- Projet 3 -->
+            <div class="project-card reveal delay-200">
+                <div class="project-img">
+                    <img src="https://picsum.photos/seed/nlp/400/250" alt="NLP Project">
+                </div>
+                <div class="project-info">
+                    <h3>Analyse de Sentiments NLP</h3>
+                    <p>Analyse de commentaires clients via le traitement du langage naturel pour détecter l'insatisfaction.</p>
+                    <a href="#" class="github-link">En savoir plus sur GitHub <i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPÉRIENCES -->
+    <section id="experience">
+        <div class="section-header reveal">
+            <h2>Mon <span class="gradient-text">Parcours</span></h2>
+            <div class="line"></div>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item left reveal">
+                <div class="content-box">
+                    <h4>Stage Data Analyst</h4>
+                    <span class="date">Été 2023</span>
+                    <p>Entreprise Tech Solutions. Nettoyage de données et création de rapports automatisés sous Python.</p>
+                </div>
+            </div>
+            <div class="timeline-item right reveal delay-100">
+                <div class="content-box">
+                    <h4>Assistant BI</h4>
+                    <span class="date">Été 2022</span>
+                    <p>Banque Régionale. Mise à jour des dashboards Power BI et aide à la décision marketing.</p>
+                </div>
+            </div>
+            <div class="timeline-item left reveal delay-200">
+                <div class="content-box">
+                    <h4>Projets Académiques</h4>
+                    <span class="date">2021 - Présent</span>
+                    <p>Multiple projets universitaires : Analyse de datasets Kaggle, compétitions de Data Science.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+        <div class="section-header reveal">
+            <h2>Me <span class="gradient-text">Contacter</span></h2>
+            <div class="line"></div>
+        </div>
+        <div class="contact-form reveal">
+            <form id="contactForm">
+                <div class="form-group">
+                    <label>Nom complet</label>
+                    <input type="text" id="name" required placeholder="Votre nom">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="email" required placeholder="votre@email.com">
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea id="message" rows="5" required placeholder="Dites-moi tout..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Envoyer le message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>&copy; 2023 Portfolio Data Scientist. Tous droits réservés.</p>
+        <!-- Bouton caché pour ouvrir l'admin (Cliquez 3 fois pour ouvrir ou utiliser le lien) -->
+        <span class="admin-trigger" onclick="openAdmin()">Admin Access</span>
+    </footer>
+
+    <!-- PANNEAU D'ADMINISTRATION (SIMULATION) -->
+    <div id="admin-modal">
+        <div class="admin-content">
+            <div class="admin-sidebar">
+                <div class="close-admin" onclick="closeAdmin()">&times;</div>
+                <h3>Admin Panel</h3>
+                <ul class="admin-menu">
+                    <li class="active" onclick="showAdminTab('dashboard')"><i class="fas fa-chart-line"></i> Vue Globale</li>
+                    <li onclick="showAdminTab('messages')"><i class="fas fa-envelope"></i> Messagerie</li>
+                    <li onclick="showAdminTab('content')"><i class="fas fa-edit"></i> Contenu</li>
+                </ul>
+            </div>
+            <div class="admin-main">
+                <!-- Tab Dashboard -->
+                <div id="dashboard" class="admin-section active-section">
+                    <h2>Statistiques du site</h2>
+                    <br>
+                    <div class="stat-card">
+                        <h4>Visites totales</h4>
+                        <h1>1,245</h1>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Projets consultés</h4>
+                        <h1>358</h1>
+                    </div>
+                    <p style="margin-top:20px; color:var(--text-muted); font-size:0.9rem;">*Données simulées pour la démo.</p>
+                </div>
+
+                <!-- Tab Messages -->
+                <div id="messages" class="admin-section">
+                    <h2>Boîte de réception</h2>
+                    <div id="message-list">
+                        <!-- Les messages s'afficheront ici via JS -->
+                        <p style="color:var(--text-muted)">Aucun message pour le moment.</p>
+                    </div>
+                </div>
+
+                <!-- Tab Contenu -->
+                <div id="content" class="admin-section">
+                    <h2>Gérer le contenu</h2>
+                    <div style="margin-top:20px;">
+                        <h4>Ajouter un projet</h4>
+                        <form onsubmit="addProject(event)">
+                            <input type="text" id="newProjTitle" placeholder="Titre du projet" style="padding:10px; width:100%; margin-bottom:10px; background:var(--bg-color); color:white; border:1px solid #333;">
+                            <input type="text" id="newProjDesc" placeholder="Description courte" style="padding:10px; width:100%; margin-bottom:10px; background:var(--bg-color); color:white; border:1px solid #333;">
+                            <button type="submit" class="btn btn-primary">Ajouter</button>
+                        </form>
+                    </div>
+                    <div style="margin-top:40px;">
+                        <h4>Liste des compétences (Simulation)</h4>
+                        <ul style="margin-top:10px; line-height:2;">
+                            <li><i class="fas fa-check" style="color:var(--accent-color)"></i> Python (Actif)</li>
+                            <li><i class="fas fa-check" style="color:var(--accent-color)"></i> SQL (Actif)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT -->
+    <script>
+        // 1. GESTION DU THEME (CLAIR/SOMBRE)
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        // Vérifier préférence sauvegardée
+        if(localStorage.getItem('theme') === 'light') {
+            body.classList.add('light-mode');
+            themeToggle.classList.replace('fa-moon', 'fa-sun');
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            if(body.classList.contains('light-mode')){
+                themeToggle.classList.replace('fa-moon', 'fa-sun');
+                localStorage.setItem('theme', 'light');
+            } else {
+                themeToggle.classList.replace('fa-sun', 'fa-moon');
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+
+        // 2. ANIMATION AU SCROLL (INTERSECTION OBSERVER)
+        const observerOptions = {
+            threshold: 0.15 // Déclenche quand 15% de l'élément est visible
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // 3. GESTION DU PANNEAU D'ADMINISTRATION (SIMULATION)
+        const adminModal = document.getElementById('admin-modal');
+        const messageList = document.getElementById('message-list');
+
+        function openAdmin() {
+            adminModal.style.display = 'flex';
+            renderMessages();
+        }
+
+        function closeAdmin() {
+            adminModal.style.display = 'none';
+        }
+
+        // Navigation dans l'admin
+        function showAdminTab(tabId) {
+            // Cacher toutes les sections
+            document.querySelectorAll('.admin-section').forEach(sec => sec.classList.remove('active-section'));
+            // Retirer active des menus
+            document.querySelectorAll('.admin-menu li').forEach(li => li.classList.remove('active'));
+            
+            // Activer la cible
+            document.getElementById(tabId).classList.add('active-section');
+            event.currentTarget.classList.add('active');
+        }
+
+        // 4. GESTION DES MESSAGES (STOCKAGE LOCAL)
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            const date = new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString();
+
+            const newMessage = { name, email, message, date };
+
+            // Récupérer les messages existants ou initialiser tableau vide
+            let messages = JSON.parse(localStorage.getItem('portfolioMessages')) || [];
+            messages.push(newMessage);
+            localStorage.setItem('portfolioMessages', JSON.stringify(messages));
+
+            // Feedback utilisateur
+            alert('Message envoyé avec succès ! (Simulation)');
+            this.reset();
+        });
+
+        function renderMessages() {
+            let messages = JSON.parse(localStorage.getItem('portfolioMessages')) || [];
+            messageList.innerHTML = '';
+
+            if(messages.length === 0) {
+                messageList.innerHTML = '<p style="color:var(--text-muted)">Aucun message.</p>';
+                return;
+            }
+
+            // Afficher du plus récent au plus ancien
+            messages.reverse().forEach(msg => {
+                const div = document.createElement('div');
+                div.className = 'message-item';
+                div.innerHTML = `
+                    <small style="color:var(--accent-color)">${msg.date}</small>
+                    <h4>${msg.name} <small>(${msg.email})</small></h4>
+                    <p>${msg.message}</p>
+                    <button class="btn btn-outline" style="padding:5px 10px; font-size:0.7rem; margin-top:5px;" onclick="deleteMessage('${msg.date}')">Supprimer</button>
+                `;
+                messageList.appendChild(div);
+            });
+        }
+
+        function deleteMessage(date) {
+            let messages = JSON.parse(localStorage.getItem('portfolioMessages')) || [];
+            messages = messages.filter(msg => msg.date !== date);
+            localStorage.setItem('portfolioMessages', JSON.stringify(messages));
+            renderMessages();
+        }
+
+        // 5. GESTION PROJETS (AJOUT DYNAMIQUE SIMULE)
+        function addProject(e) {
+            e.preventDefault();
+            const title = document.getElementById('newProjTitle').value;
+            const desc = document.getElementById('newProjDesc').value;
+
+            if(!title || !desc) return;
+
+            const projectsGrid = document.querySelector('.projects-grid');
+            
+            const newCard = document.createElement('div');
+            newCard.className = 'project-card reveal'; // On ajoute la classe animation
+            newCard.innerHTML = `
+                <div class="project-img">
+                    <img src="https://picsum.photos/seed/${Math.random()}/400/250" alt="New Project">
+                </div>
+                <div class="project-info">
+                    <h3>${title}</h3>
+                    <p>${desc}</p>
+                    <a href="#" class="github-link">En savoir plus sur GitHub <i class="fab fa-github"></i></a>
+                </div>
+            `;
+            
+            projectsGrid.appendChild(newCard);
+            
+            // Relancer l'observer sur le nouvel élément pour l'animation
+            observer.observe(newCard);
+
+            alert('Projet ajouté au site !');
+            document.getElementById('newProjTitle').value = '';
+            document.getElementById('newProjDesc').value = '';
+        }
+
+    </script>
+</body>
+</html>
