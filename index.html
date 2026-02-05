@@ -225,7 +225,7 @@
             width: 500px;
             height: 500px;
             background: var(--primary-gradient);
-            filter: blur(150px);
+            filter: blur(100px);
             opacity: 0.2;
             border-radius: 50%;
             z-index: -1;
@@ -280,14 +280,14 @@
         .apple-frame {
             width: 350px;
             height: 420px; /* Plus long que large */
-            background-image: url('https://picsum.photos/seed/datascience/400/500'); /* Placeholder */
+            background-image: url('assets/ma-photo.png'); /* Placeholder */
             background-size: cover;
             background-position: center;
             /* Forme style Apple (coins arrondis sophistiqués) */
             border-radius: 40px 40px 40px 10px; 
             position: relative;
             box-shadow: 
-                20px 20px 60px rgba(0,0,0,0.4),
+                20px 20px 20px rgba(0,0,0,0.4),
                 -10px -10px 30px rgba(255,255,255,0.05); /* Profondeur */
             z-index: 2;
             transition: transform 0.5s;
@@ -301,8 +301,8 @@
             background: var(--primary-gradient);
             border-radius: 50px 50px 50px 20px;
             z-index: -1;
-            filter: blur(15px);
-            opacity: 0.6;
+            filter: blur(10px);
+            opacity: 0.1;
         }
 
         .apple-frame:hover {
@@ -362,6 +362,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center top;
         }
 
         /* Fond brillant derrière */
@@ -724,7 +725,7 @@
 
     <!-- NAVIGATION -->
     <nav>
-        <div class="logo">Data<span class="gradient-text">Scientist</span>.</div>
+        <div class="logo">Rawda<span class="gradient-text">-aicha</span>.</div>
         <ul class="nav-links">
             <li><a href="#home">Accueil</a></li>
             <li><a href="#about">À propos</a></li>
@@ -744,12 +745,12 @@
         <div class="bg-shape"></div>
         <div class="hero-content">
             <div class="hero-text reveal">
-                <h3>Bonjour, je suis</h3>
-                <h1 class="gradient-text">Future Data Scientist</h1>
+                <h3>HELLO, Je suis</h3>
+                <h1 class="gradient-text">DATA Scientist</h1>
                 <p>Étudiante en 4ème année, spécialisée dans l'analyse de données, le Machine Learning et la transformation de données brutes en décisions stratégiques.</p>
                 <div class="hero-buttons">
                     <a href="#contact" class="btn btn-primary">Contact Me</a>
-                    <a href="#" class="btn btn-outline" download>Download CV <i class="fas fa-download"></i></a>
+                    <a href="assets/monCV.pdf" class="btn btn-outline" download>Download CV <i class="fas fa-download"></i></a>
                 </div>
             </div>
             <div class="hero-image-container reveal delay-200">
@@ -767,15 +768,15 @@
         <div class="about-container">
             <div class="about-img reveal">
                 <div class="rect-frame">
-                    <img src="https://picsum.photos/seed/student/500/400" alt="Photo Profil">
+                    <img src="assets/photo-de-moi.png" alt="Photo Profil">
                 </div>
             </div>
             <div class="about-text reveal delay-100">
-                <h3>Passionnée par les chiffres et l'impact.</h3>
+                <h3>Passionnée par l'impact des Données.</h3>
                 <br>
                 <p>Actuellement en 4ème année d'études supérieures en Data Science, je combine une rigueur analytique avec une créativité dans la visualisation des données.</p>
                 <p>Mon objectif est d'aider les entreprises à comprendre leurs données. Je maîtrise la chaîne de valeur de la data : du nettoyage à la modélisation prédictive, en passant par la visualisation interactive.</p>
-                <p>Contrairement à un développeur pur, mon focus n'est pas de créer des applications web complexes, mais de leur donner du sens à travers le backend et l'analyse.</p>
+                <p>Je suis toujours à la recherche de nouveaux défis et opportunités pour appliquer mes compétences et apprendre davantage dans ce domaine en constante évolution.</p>
             </div>
         </div>
     </section>
@@ -814,7 +815,7 @@
                 <h3>Visualisation & BI</h3>
                 <div class="skill-tags">
                     <span>Power BI</span>
-                    <span>Tableau</span>
+                    <span>Pentaho</span>
                     <span>Excel Avancé</span>
                 </div>
             </div>
@@ -842,29 +843,29 @@
             <!-- Projet 1 -->
             <div class="project-card reveal">
                 <div class="project-img">
-                    <img src="https://picsum.photos/seed/mlproject/400/250" alt="ML Project">
+                    <img src="assets/plante-coton.jpg" alt="ML Project">
                 </div>
                 <div class="project-info">
-                    <h3>Prédiction de Churn Client</h3>
-                    <p>Modèle de Machine Learning utilisant Python et Scikit-Learn pour prédire la fidélité des clients bancaires.</p>
+                    <h3>Prédiction du rendement de coton</h3>
+                    <p>Modèle de Machine Learning utilisant Python et Scikit-Learn pour prédire le rendement et l'impact du changement climatique sur la culture du coton.</p>
                     <a href="#" class="github-link">En savoir plus sur GitHub <i class="fab fa-github"></i></a>
                 </div>
             </div>
             <!-- Projet 2 -->
             <div class="project-card reveal delay-100">
                 <div class="project-img">
-                    <img src="https://picsum.photos/seed/dashboard/400/250" alt="Dashboard">
+                    <img src="assets/echec-succes.jpg" alt="Dashboard">
                 </div>
                 <div class="project-info">
-                    <h3>Dashboard Ventes Power BI</h3>
-                    <p>Tableau de bord interactif connecté à une base SQL pour suivre les KPIs de vente en temps réel.</p>
+                    <h3>Fouille exploratoire sur le succès/echec d'une Entreprise</h3>
+                    <p>L'objectif de ce projet est de comprendre quel a été le levier qui a causé le declin de l'entreprise.</p>
                     <a href="#" class="github-link">En savoir plus sur GitHub <i class="fab fa-github"></i></a>
                 </div>
             </div>
             <!-- Projet 3 -->
             <div class="project-card reveal delay-200">
                 <div class="project-img">
-                    <img src="https://picsum.photos/seed/nlp/400/250" alt="NLP Project">
+                    <img src="assets/images.jpg" alt="NLP Project">
                 </div>
                 <div class="project-info">
                     <h3>Analyse de Sentiments NLP</h3>
@@ -884,23 +885,16 @@
         <div class="timeline">
             <div class="timeline-item left reveal">
                 <div class="content-box">
-                    <h4>Stage Data Analyst</h4>
-                    <span class="date">Été 2023</span>
-                    <p>Entreprise Tech Solutions. Nettoyage de données et création de rapports automatisés sous Python.</p>
+                    <h4>Stagiaire En Data Science</h4>
+                    <span class="date">juillet-AOUT 2025</span>
+                    <p>Conception et déploiement d'un support de gestion clients. Le projet a couvert l'ensemble du pipeline : de la constitution d'une base de données robuste sous MongoDB au réentraînement  du modèle. l'ingénierie logicielle avec la création d'une API dédiée. Pour rendre l'outil actionnable, nous avons intégré  une interface Streamlit, transformant ainsi un modèle complexe en un outil métier fluide.</p>
                 </div>
             </div>
             <div class="timeline-item right reveal delay-100">
                 <div class="content-box">
-                    <h4>Assistant BI</h4>
-                    <span class="date">Été 2022</span>
-                    <p>Banque Régionale. Mise à jour des dashboards Power BI et aide à la décision marketing.</p>
-                </div>
-            </div>
-            <div class="timeline-item left reveal delay-200">
-                <div class="content-box">
-                    <h4>Projets Académiques</h4>
-                    <span class="date">2021 - Présent</span>
-                    <p>Multiple projets universitaires : Analyse de datasets Kaggle, compétitions de Data Science.</p>
+                    <h4>Stagiaire En Data Science</h4>
+                    <span class="date">janvier-juin 2026</span>
+                    <p>conception et deploiement d'une ERP pour la gestion commerciale d'une entreprise de prestation de service informatique. Le projet a couvert l'ensemble du pipeline : de la constitution d'une base de données robuste sous PostgreSQL, l'automatisation des taches avec python et la creation d'un Dashboard interactif avec Power BI.</p>
                 </div>
             </div>
         </div>
@@ -933,7 +927,7 @@
 
     <!-- FOOTER -->
     <footer>
-        <p>&copy; 2023 Portfolio Data Scientist. Tous droits réservés.</p>
+        <p>&copy; 2026 Portfolio Data Scientist. Tous droits réservés.</p>
         <!-- Bouton caché pour ouvrir l'admin (Cliquez 3 fois pour ouvrir ou utiliser le lien) -->
         <span class="admin-trigger" onclick="openAdmin()">Admin Access</span>
     </footer>
@@ -998,155 +992,123 @@
         </div>
     </div>
 
-    <!-- JAVASCRIPT -->
-    <script>
-        // 1. GESTION DU THEME (CLAIR/SOMBRE)
+      <script>
+        // 1. GESTION DU THEME
         const themeToggle = document.getElementById('theme-toggle');
         const body = document.body;
-
-        // Vérifier préférence sauvegardée
         if(localStorage.getItem('theme') === 'light') {
             body.classList.add('light-mode');
             themeToggle.classList.replace('fa-moon', 'fa-sun');
         }
-
         themeToggle.addEventListener('click', () => {
             body.classList.toggle('light-mode');
-            if(body.classList.contains('light-mode')){
-                themeToggle.classList.replace('fa-moon', 'fa-sun');
-                localStorage.setItem('theme', 'light');
-            } else {
-                themeToggle.classList.replace('fa-sun', 'fa-moon');
-                localStorage.setItem('theme', 'dark');
-            }
+            themeToggle.classList.toggle('fa-moon');
+            themeToggle.classList.toggle('fa-sun');
+            localStorage.setItem('theme', body.classList.contains('light-mode') ? 'light' : 'dark');
         });
 
-        // 2. ANIMATION AU SCROLL (INTERSECTION OBSERVER)
-        const observerOptions = {
-            threshold: 0.15 // Déclenche quand 15% de l'élément est visible
-        };
-
+        // 2. ANIMATION AU SCROLL
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
+                if (entry.isIntersecting) entry.target.classList.add('active');
             });
-        }, observerOptions);
+        }, { threshold: 0.15 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        document.querySelectorAll('.reveal').forEach(el => {
-            observer.observe(el);
-        });
+        // 3. API URL (Change pour l'URL de ton site Vercel une fois déployé)
+        // En local, on laisse vide ou on met http://127.0.0.1:5000
+        // Pour Vercel, mets : 'https://ton-site.vercel.app/api'
+        const API_URL = ''; 
 
-        // 3. GESTION DU PANNEAU D'ADMINISTRATION (SIMULATION)
+        // 4. GESTION ADMIN
         const adminModal = document.getElementById('admin-modal');
         const messageList = document.getElementById('message-list');
 
         function openAdmin() {
             adminModal.style.display = 'flex';
-            renderMessages();
+            fetchMessages(); // Charger les vrais messages
         }
-
-        function closeAdmin() {
-            adminModal.style.display = 'none';
-        }
-
-        // Navigation dans l'admin
+        function closeAdmin() { adminModal.style.display = 'none'; }
+        
         function showAdminTab(tabId) {
-            // Cacher toutes les sections
-            document.querySelectorAll('.admin-section').forEach(sec => sec.classList.remove('active-section'));
-            // Retirer active des menus
-            document.querySelectorAll('.admin-menu li').forEach(li => li.classList.remove('active'));
-            
-            // Activer la cible
+            document.querySelectorAll('.admin-section').forEach(s => s.classList.remove('active-section'));
+            document.querySelectorAll('.admin-menu li').forEach(l => l.classList.remove('active'));
             document.getElementById(tabId).classList.add('active-section');
             event.currentTarget.classList.add('active');
         }
 
-        // 4. GESTION DES MESSAGES (STOCKAGE LOCAL)
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
+        // --- RÉCUPÉRER LES VRAIS MESSAGES ---
+        async function fetchMessages() {
+            try {
+                const res = await fetch(`${API_URL}/api/messages`);
+                const data = await res.json();
+                messageList.innerHTML = '';
+                if(data.length === 0) messageList.innerHTML = '<p>Aucun message.</p>';
+                
+                data.forEach(msg => {
+                    const div = document.createElement('div');
+                    div.className = 'message-item';
+                    div.innerHTML = `
+                        <small style="color:var(--accent-color)">${msg.date}</small>
+                        <h4>${msg.name} <small>(${msg.email})</small></h4>
+                        <p>${msg.message}</p>
+                        <button class="btn btn-outline" style="padding:5px 10px; font-size:0.7rem; margin-top:5px;">Supprimer (Backend only)</button>
+                    `;
+                    messageList.appendChild(div);
+                });
+            } catch (error) {
+                messageList.innerHTML = '<p style="color:red">Erreur de connexion au Backend.</p>';
+            }
+        }
+
+        // 5. ENVOI DU FORMULAIRE DE CONTACT (API)
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const message = document.getElementById('message').value;
-            const date = new Date().toLocaleDateString() + ' ' + new Date().toLocaleTimeString();
 
-            const newMessage = { name, email, message, date };
-
-            // Récupérer les messages existants ou initialiser tableau vide
-            let messages = JSON.parse(localStorage.getItem('portfolioMessages')) || [];
-            messages.push(newMessage);
-            localStorage.setItem('portfolioMessages', JSON.stringify(messages));
-
-            // Feedback utilisateur
-            alert('Message envoyé avec succès ! (Simulation)');
-            this.reset();
+            try {
+                const res = await fetch(`${API_URL}/api/contact`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email, message })
+                });
+                if(res.ok) {
+                    alert('Message envoyé avec succès !');
+                    this.reset();
+                } else {
+                    alert('Erreur lors de l\'envoi.');
+                }
+            } catch (err) {
+                alert('Erreur : Backend non connecté.');
+            }
         });
 
-        function renderMessages() {
-            let messages = JSON.parse(localStorage.getItem('portfolioMessages')) || [];
-            messageList.innerHTML = '';
-
-            if(messages.length === 0) {
-                messageList.innerHTML = '<p style="color:var(--text-muted)">Aucun message.</p>';
-                return;
-            }
-
-            // Afficher du plus récent au plus ancien
-            messages.reverse().forEach(msg => {
-                const div = document.createElement('div');
-                div.className = 'message-item';
-                div.innerHTML = `
-                    <small style="color:var(--accent-color)">${msg.date}</small>
-                    <h4>${msg.name} <small>(${msg.email})</small></h4>
-                    <p>${msg.message}</p>
-                    <button class="btn btn-outline" style="padding:5px 10px; font-size:0.7rem; margin-top:5px;" onclick="deleteMessage('${msg.date}')">Supprimer</button>
-                `;
-                messageList.appendChild(div);
-            });
+        // 6. CHARGER LES PROJETS AU DÉMARRAGE (Optionnel si tu veux gérer via BDD)
+        async function loadProjects() {
+            try {
+                const res = await fetch(`${API_URL}/api/projects`);
+                const projects = await res.json();
+                const grid = document.querySelector('.projects-grid');
+                // Ici tu peux vider le HTML actuel et le remplir par la BDD
+                // Pour l'instant, je laisse le HTML statique, mais la fonction est prête.
+            } catch(e) { console.log("Projets statiques utilisés"); }
         }
+        // loadProjects(); // Décommente pour utiliser la BDD
 
-        function deleteMessage(date) {
-            let messages = JSON.parse(localStorage.getItem('portfolioMessages')) || [];
-            messages = messages.filter(msg => msg.date !== date);
-            localStorage.setItem('portfolioMessages', JSON.stringify(messages));
-            renderMessages();
-        }
-
-        // 5. GESTION PROJETS (AJOUT DYNAMIQUE SIMULE)
-        function addProject(e) {
+        // Ajout Projet (Admin)
+        async function addProject(e) {
             e.preventDefault();
             const title = document.getElementById('newProjTitle').value;
             const desc = document.getElementById('newProjDesc').value;
 
-            if(!title || !desc) return;
-
-            const projectsGrid = document.querySelector('.projects-grid');
-            
-            const newCard = document.createElement('div');
-            newCard.className = 'project-card reveal'; // On ajoute la classe animation
-            newCard.innerHTML = `
-                <div class="project-img">
-                    <img src="https://picsum.photos/seed/${Math.random()}/400/250" alt="New Project">
-                </div>
-                <div class="project-info">
-                    <h3>${title}</h3>
-                    <p>${desc}</p>
-                    <a href="#" class="github-link">En savoir plus sur GitHub <i class="fab fa-github"></i></a>
-                </div>
-            `;
-            
-            projectsGrid.appendChild(newCard);
-            
-            // Relancer l'observer sur le nouvel élément pour l'animation
-            observer.observe(newCard);
-
-            alert('Projet ajouté au site !');
-            document.getElementById('newProjTitle').value = '';
-            document.getElementById('newProjDesc').value = '';
+            await fetch(`${API_URL}/api/projects`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ title, description: desc })
+            });
+            alert('Projet ajouté en base de données !');
+            // Recharger la page pour voir le changement (ou utiliser loadProjects)
         }
-
     </script>
-</body>
-</html>
